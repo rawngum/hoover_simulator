@@ -12,12 +12,13 @@ class Room(val width: Int, val height: Int, val hoover: Hoover) {
         }
     }
 
-    fun move(move: Moves){
-        when(move){
-            Moves.A -> forward()
-            Moves.D -> hoover.rotate()
-            Moves.G -> hoover.antiRotate()
-        }
+    fun move(vararg moves: Moves){
+        for (move in moves)
+            when(move){
+                Moves.A -> forward()
+                Moves.D -> hoover.rotate()
+                Moves.G -> hoover.antiRotate()
+            }
     }
 
     private fun forward() {
