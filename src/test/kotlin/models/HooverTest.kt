@@ -1,6 +1,6 @@
 package models
 
-import enums.Direction
+import enums.Directions
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.*
 
@@ -9,10 +9,10 @@ internal class HooverTest{
     fun testNewHover(){
         val x = 100
         val y = 3
-        val direction = Direction.EAST
+        val direction = Directions.EAST
         var hover = Hoover(x, y, direction)
         assertEquals(x, hover.x)
         assertEquals(y, hover.y)
-        assertEquals(direction, hover.direction)
+        assertEquals(direction, hover.directions)
     }
 }

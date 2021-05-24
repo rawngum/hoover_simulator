@@ -1,10 +1,9 @@
 package models
 
-import enums.Direction
+import enums.Directions
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.*
 import java.lang.Exception
-import java.lang.NumberFormatException
 import kotlin.test.assertFailsWith
 
 internal class RoomTest {
@@ -12,9 +11,9 @@ internal class RoomTest {
     fun testNewGrid(){
         val width = 100
         val height = 200
-        val x = 100
-        val y = 3
-        val direction = Direction.EAST
+        val x = 99
+        val y = 199
+        val direction = Directions.EAST
         var hover = Hoover(x, y, direction)
         val room = Room(width, height, hover)
         assertEquals(height, room.height)
@@ -24,13 +23,22 @@ internal class RoomTest {
     fun testCannotCreateRoomWithHooverOutOfBound(){
         val width = 100
         val height = 200
-        val x = 100
-        val y = 201
-        val direction = Direction.EAST
-        var hover = Hoover(x, y, direction)
         assertFailsWith(
             exceptionClass = Exception::class,
-            block = { Room(width, height, hover) }
+            block = { Room(width, height, Hoover(0, 200, Directions.EAST)) }
+        )
+        assertFailsWith(
+            exceptionClass = Exception::class,
+            block = { Room(width, height, Hoover(100, 0, Directions.EAST)) }
+        )
+
+        assertFailsWith(
+            exceptionClass = Exception::class,
+            block = { Room(width, height, Hoover(-1, 199, Directions.EAST)) }
+        )
+        assertFailsWith(
+            exceptionClass = Exception::class,
+            block = { Room(width, height, Hoover(99, -1, Directions.EAST)) }
         )
     }
 }

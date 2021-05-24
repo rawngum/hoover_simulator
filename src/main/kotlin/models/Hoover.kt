@@ -1,6 +1,6 @@
 package models
 
-import enums.Direction
+import enums.Directions
 
-class Hoover(val x: Int, val y:Int, val direction: Direction){
+class Hoover(val x: Int, val y:Int, val directions: Directions){
 }
