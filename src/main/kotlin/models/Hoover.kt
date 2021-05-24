@@ -4,10 +4,10 @@ import enums.Directions
 
 class Hoover(var x: Int, var y:Int, var directions: Directions){
     fun rotate() {
-        TODO("Not yet implemented")
+        directions = directions.next()
     }
 
     fun antiRotate() {
-        TODO("Not yet implemented")
+        directions = directions.prev()
     }
 }
