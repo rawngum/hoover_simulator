@@ -12,11 +12,11 @@ enum class Directions {
     },
     EAST {
         override fun next(): Directions {
-            return NORTH
+            return SOUTH
         }
 
         override fun prev(): Directions {
-            return SOUTH
+            return NORTH
         }
     },
     SOUTH {

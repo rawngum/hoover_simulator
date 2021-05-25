@@ -27,7 +27,7 @@ internal class HooverTest{
         hover.antiRotate()
         hover.antiRotate()
         hover.antiRotate()
-        assertEquals(Directions.SOUTH, hover.directions)
+        assertEquals(Directions.NORTH, hover.directions)
     }
 
 }
