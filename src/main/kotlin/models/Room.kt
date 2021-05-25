@@ -24,7 +24,7 @@ class Room(val width: Int, val height: Int, val hoover: Hoover) {
     private fun forward() {
         val x = hoover.x
         val y = hoover.y
-        when(hoover.directions){
+        when(hoover.direction){
             Directions.NORTH -> if(isInBound(x, y + 1)) hoover.y++
             Directions.SOUTH -> if(isInBound(x, y - 1)) hoover.y--
             Directions.WEST -> if(isInBound(x + 1, y)) hoover.x++
@@ -41,6 +41,6 @@ class Room(val width: Int, val height: Int, val hoover: Hoover) {
     }
 
     fun getHooverDirection(): Directions {
-        return hoover.directions
+        return hoover.direction
     }
 }

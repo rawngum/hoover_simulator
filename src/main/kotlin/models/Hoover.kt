@@ -2,12 +2,12 @@ package models
 
 import enums.Directions
 
-class Hoover(var x: Int, var y:Int, var directions: Directions){
+class Hoover(var x: Int, var y:Int, var direction: Directions){
     fun rotate() {
-        directions = directions.next()
+        direction = direction.next()
     }
 
     fun antiRotate() {
-        directions = directions.prev()
+        direction = direction.prev()
     }
 }

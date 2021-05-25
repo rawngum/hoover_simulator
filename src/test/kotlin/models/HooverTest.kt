@@ -13,7 +13,7 @@ internal class HooverTest{
         var hover = Hoover(x, y, direction)
         assertEquals(x, hover.x)
         assertEquals(y, hover.y)
-        assertEquals(direction, hover.directions)
+        assertEquals(direction, hover.direction)
     }
     @Test
     fun testRotateHover(){
@@ -21,13 +21,13 @@ internal class HooverTest{
         hover.rotate()
         hover.rotate()
         hover.rotate()
-        assertEquals(Directions.EAST, hover.directions)
+        assertEquals(Directions.EAST, hover.direction)
         hover.antiRotate()
         hover.antiRotate()
         hover.antiRotate()
         hover.antiRotate()
         hover.antiRotate()
-        assertEquals(Directions.NORTH, hover.directions)
+        assertEquals(Directions.NORTH, hover.direction)
     }
 
 }
