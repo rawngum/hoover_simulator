@@ -1,43 +1,27 @@
 package enums
 
 enum class Directions {
-    NORTH {
-        override fun next(): Directions {
-            return EAST
+    NORTH ,
+    EAST ,
+    SOUTH ,
+    WEST ;
+
+    open fun prev(): Directions {
+        return sibling('-')
+    }
+
+    open operator fun next(): Directions {
+        return sibling('+')
+    }
+
+    private fun sibling(operator: Char): Directions {
+        val values = values()
+        return when(operator){
+            '-' -> values[(ordinal - 1 + values.size) % values.size]
+            '+' -> values[(ordinal + 1 + values.size) % values.size]
+            else -> throw Exception("Unsupported operator")
         }
 
-        override fun prev(): Directions {
-            return WEST
-        }
-    },
-    EAST {
-        override fun next(): Directions {
-            return SOUTH
-        }
+    }
 
-        override fun prev(): Directions {
-            return NORTH
-        }
-    },
-    SOUTH {
-        override fun next(): Directions {
-            return WEST
-        }
-
-        override fun prev(): Directions {
-            return EAST
-        }
-    },
-    WEST {
-        override fun next(): Directions {
-            return NORTH
-        }
-
-        override fun prev(): Directions {
-            return SOUTH
-        }
-    };
-
-    abstract fun next(): Directions
-    abstract fun prev(): Directions
 }
