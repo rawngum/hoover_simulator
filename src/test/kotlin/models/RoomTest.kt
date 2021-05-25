@@ -44,9 +44,47 @@ internal class RoomTest {
     }
     @Test
     fun testMove(){
-        var hoover = Hoover(5, 5, Directions.SOUTH)
+        var hoover = Hoover(5, 5, Directions.NORTH)
         var room = Room(10,10, hoover)
-        room.move(Moves.A)
+        room.move(Moves.D, Moves.A, Moves.D, Moves.A,Moves.D,Moves.A,Moves.D,Moves.A,Moves.A)
         assertEquals(Pair(5,6), room.getHooverPosition())
+        assertEquals(Directions.NORTH, room.getHooverDirection())
+    }
+    @Test
+    fun testMoveStepByStep(){
+        var hoover = Hoover(5, 5, Directions.NORTH)
+        var room = Room(10,10, hoover)
+
+        room.move(Moves.D)
+        assertEquals(Pair(5,5), room.getHooverPosition())
+        assertEquals(Directions.EAST, room.getHooverDirection())
+
+        room.move(Moves.A)
+        assertEquals(Pair(4,5), room.getHooverPosition())
+        assertEquals(Directions.EAST, room.getHooverDirection())
+
+        room.move(Moves.D)
+        assertEquals(Pair(4,5), room.getHooverPosition())
+        assertEquals(Directions.SOUTH, room.getHooverDirection())
+
+        room.move(Moves.A)
+        assertEquals(Pair(4,4), room.getHooverPosition())
+        assertEquals(Directions.SOUTH, room.getHooverDirection())
+
+        room.move(Moves.G)
+        assertEquals(Pair(4,4), room.getHooverPosition())
+        assertEquals(Directions.EAST, room.getHooverDirection())
+
+        room.move(Moves.G)
+        assertEquals(Pair(4,4), room.getHooverPosition())
+        assertEquals(Directions.NORTH, room.getHooverDirection())
+
+        room.move(Moves.G)
+        assertEquals(Pair(4,4), room.getHooverPosition())
+        assertEquals(Directions.WEST, room.getHooverDirection())
+
+        room.move(Moves.A)
+        assertEquals(Pair(5,4), room.getHooverPosition())
+        assertEquals(Directions.WEST, room.getHooverDirection())
     }
 }

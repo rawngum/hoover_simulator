@@ -25,10 +25,10 @@ class Room(val width: Int, val height: Int, val hoover: Hoover) {
         val x = hoover.x
         val y = hoover.y
         when(hoover.directions){
-            Directions.NORTH -> if(isInBound(x, y - 1)) hoover.y--
-            Directions.SOUTH -> if(isInBound(x, y + 1)) hoover.y++
-            Directions.WEST -> if(isInBound(x - 1, y)) hoover.x--
-            Directions.EAST -> if(isInBound(x + 1, y + 1)) hoover.x++
+            Directions.NORTH -> if(isInBound(x, y + 1)) hoover.y++
+            Directions.SOUTH -> if(isInBound(x, y - 1)) hoover.y--
+            Directions.WEST -> if(isInBound(x + 1, y)) hoover.x++
+            Directions.EAST -> if(isInBound(x - 1, y )) hoover.x--
         }
     }
 
@@ -38,5 +38,9 @@ class Room(val width: Int, val height: Int, val hoover: Hoover) {
 
     fun getHooverPosition(): Pair<Int, Int> {
         return Pair(hoover.x, hoover.y)
+    }
+
+    fun getHooverDirection(): Directions {
+        return hoover.directions
     }
 }
